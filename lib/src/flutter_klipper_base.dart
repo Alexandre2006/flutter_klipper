@@ -1,4 +1,9 @@
+import 'dart:async';
 import 'dart:io';
+
+import 'package:json_rpc_2/json_rpc_2.dart';
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Klipper {
   // Configuration
@@ -7,15 +12,22 @@ class Klipper {
   String? token;
 
   // WebSocket
-  late WebSocket _ws;
+  WebSocketChannel? _ws;
+  Duration timeout;
+
+  // JSON-RPC
+  late Client _jsonRpc;
 
   // Status
   KlipperStatus status = KlipperStatus.disconnected;
   bool _closed = false;
 
   // Constructor
-  Klipper(this.host, {this.port = 7125, this.token}) {
-    _connect();
+  Klipper(this.host,
+      {this.port = 7125,
+      this.timeout = const Duration(seconds: 5),
+      this.token}) {
+    connect(timeout);
   }
 
   // WebSocket
@@ -24,42 +36,33 @@ class Klipper {
     disconnect();
   }
 
-  Future<void> _connect() async {
+  Future<void> connect(Duration timeout) async {
     try {
-      _ws = await WebSocket.connect(
-        'ws://$host:$port/websocket${token != null ? '?token=$token' : ''}',
+      if (_ws != null) {
+        await _ws!.sink.close(1000, 'Flutter Klipper Reconnecting');
+      }
+      _ws = IOWebSocketChannel(
+        await WebSocket.connect(
+          'ws://$host:$port/websocket${token != null ? '?token=$token' : ''}',
+        ).timeout(timeout),
       );
-    } on SocketException {
+      _jsonRpc = Client(_ws!.cast<String>());
+    } catch (e) {
       status = KlipperStatus.disconnected;
       if (!_closed) {
-        Future.delayed(const Duration(seconds: 3), () => connect());
+        Future.delayed(const Duration(seconds: 3), () => connect(timeout));
       }
     }
   }
 
-  Future<void> connect() async {
-    if (_ws.readyState == WebSocket.open ||
-        _ws.readyState == WebSocket.connecting) {
-      await _ws.close(1000, 'Flutter Klipper Reconnecting');
-    }
-    _connect();
-  }
-
   Future<void> disconnect() async {
-    if (_ws.readyState == WebSocket.open ||
-        _ws.readyState == WebSocket.connecting) {
-      await _ws.close(1000, 'Flutter Klipper Disconnecting');
+    if (_ws != null) {
+      await _ws!.sink.close(1000, 'Flutter Klipper Disconnecting');
     }
     status = KlipperStatus.disconnected;
   }
 
-  Future<void> getInitialState() async {}
-
-  void registerStatusListeners() {
-    _ws.listen((event) {
-      print(event);
-    });
-  }
+  
 }
 
 class KlipperConnectionError implements Exception {
