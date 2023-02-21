@@ -1,14 +1,19 @@
 name: flutter_klipper
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: Klipper/Moonraker client library for building Dart/Flutter apps for 3D printers
+version: 0.0.1
+repository: https://github.com/Alexandre2006/flutter_klipper
+homepage: https://github.com/Alexandre2006/flutter_klipper
+issue_tracker: https://github.com/Alexandre2006/flutter_klipper/issues
+documentation: https://github.com/Alexandre2006/flutter_klipper
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
 
-# dependencies:
-#   path: ^1.8.0
+dependencies:
+  web_socket_channel: ^2.3.0
 
 dev_dependencies:
-  lints: ^2.0.0
+  lint: ^2.0.1
   test: ^1.21.0
