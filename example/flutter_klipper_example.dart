@@ -1,6 +1,5 @@
-import 'package:flutter_klipper/flutter_klipper.dart';
+import 'dart:io';
 
 void main() {
-  Klipper klipper = Klipper('raspberrypi.local');
-  print("done");
+  stdin.listen((event) {});
 }
