@@ -23,13 +23,29 @@ class RestartServiceCommand extends BaseCommand {
   }
 }
 
+/// Services that can be restarted by the [RestartServiceCommand]
 enum RestartableService {
+  /// Restart the crowsnest service
   crowsnest,
+
+  /// Restart the MoonCord service
   mooncord,
+
+  /// Restart the moonraker service
   moonraker,
+
+  /// Restart the moonraker-telegram-bot service
   moonrakerTelegramBot,
+
+  /// Restart the klipper service
   klipper,
+
+  /// Restart the KlipperScreen service
   klipperScreen,
+
+  /// Restart the sonar service
   sonar,
+
+  /// Restart the webcamd service
   webcamd
 }

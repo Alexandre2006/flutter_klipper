@@ -13,4 +13,14 @@ class SetDeviceStateCommand extends BaseCommand {
   }
 }
 
-enum PowerState { on, off, toggle }
+/// Power states for Klipper \[power\] components
+enum PowerState {
+  /// Turns the device on
+  on,
+
+  /// Turns the device off
+  off,
+
+  /// Toggles the device on or off
+  toggle
+}
