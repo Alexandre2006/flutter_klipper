@@ -19,21 +19,9 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 //   - Write Tests for all commands
 //   - Documentation for All
 // - Events:
-//   - Subscription Events
-//   - GCode Response Events
-//   - File Operations Events
-//   - Update Manager
-//   - CPU Throttling
-//   - Moonraker Stats
-//   - History
-//   - User Changes
-//   - Service Mode
-//   - Job Queue
-//   - Button Events
-//   - Announcements
-//   - Sudo Access
-//   - Agent Events
-//   - Sensor Events
+//   - Parser for events (all)
+//   - Write Tests for (all) events
+//   - Documentation For All
 
 /// A class for communicating with a Klipper instance over WebSockets using JSON-RPC (via Moonraker).
 class Klipper {
@@ -54,6 +42,105 @@ class Klipper {
   /// Listenable Notifier for monitoring the status of the Klipper instance.
   KlipperStatusNotifier statusNotifier = KlipperStatusNotifier();
   bool _closed = false;
+
+  // Events
+  final StreamController _subscriptionEventController =
+      StreamController.broadcast();
+  final StreamController _gcodeResponseEventController =
+      StreamController.broadcast();
+  final StreamController _fileChangedEventController =
+      StreamController.broadcast();
+  final StreamController _updateManagerResponseEventController =
+      StreamController.broadcast();
+  final StreamController _updateManagerRefreshedEventController =
+      StreamController.broadcast();
+  final StreamController _throttlingEventController =
+      StreamController.broadcast();
+  final StreamController _moonrakerStatsEventController =
+      StreamController.broadcast();
+  final StreamController _historyEventController = StreamController.broadcast();
+  final StreamController _userCreatedEventController =
+      StreamController.broadcast();
+  final StreamController _userDeletedEventController =
+      StreamController.broadcast();
+  final StreamController _userLoggedOutEventController = StreamController();
+  final StreamController _serviceStateChangedEventController =
+      StreamController();
+  final StreamController _jobQueueEventController = StreamController();
+  final StreamController _buttonEventController = StreamController();
+  final StreamController _announcementUpdatedEventController =
+      StreamController();
+  final StreamController _announcementDismissedEventController =
+      StreamController();
+  final StreamController _announcementWakeEventController = StreamController();
+  final StreamController _sudoAlertEventController = StreamController();
+  final StreamController _agentEventController = StreamController();
+  final StreamController _sensorEventController = StreamController();
+
+  /// Stream for monitoring subscription events from printer objects.
+  Stream get onBroadcastEvent => _subscriptionEventController.stream;
+
+  /// Stream for monitoring GCode responses.
+  Stream get onGCodeResponseEvent => _gcodeResponseEventController.stream;
+
+  /// Stream for monitoring file changes.
+  Stream get onFileChangedEvent => _fileChangedEventController.stream;
+
+  /// Stream for monitoring Update Manager responses (during client updates).
+  Stream get onUpdateManagerResponseEvent =>
+      _updateManagerResponseEventController.stream;
+
+  /// Stream for monitoring Update Manager refreshes.
+  Stream get onUpdateManagerRefreshedEvent =>
+      _updateManagerRefreshedEventController.stream;
+
+  /// Stream for monitoring CPU throttling events.
+  Stream get onThrottlingEvent => _throttlingEventController.stream;
+
+  /// Stream for monitoring Moonraker stats.
+  Stream get onMoonrakerStatsEvent => _moonrakerStatsEventController.stream;
+
+  /// Stream for monitoring history events.
+  Stream get onHistoryEvent => _historyEventController.stream;
+
+  /// Stream for monitoring user creation events.
+  Stream get onUserCreatedEvent => _userCreatedEventController.stream;
+
+  /// Stream for monitoring user deletion events.
+  Stream get onUserDeletedEvent => _userDeletedEventController.stream;
+
+  /// Stream for monitoring user logout events.
+  Stream get onUserLoggedOutEvent => _userLoggedOutEventController.stream;
+
+  /// Stream for monitoring service state changes.
+  Stream get onServiceStateChangedEvent =>
+      _serviceStateChangedEventController.stream;
+
+  /// Stream for monitoring job queue events.
+  Stream get onJobQueueEvent => _jobQueueEventController.stream;
+
+  /// Stream for monitoring button events.
+  Stream get onButtonEvent => _buttonEventController.stream;
+
+  /// Stream for monitoring announcement updates.
+  Stream get onAnnouncementUpdatedEvent =>
+      _announcementUpdatedEventController.stream;
+
+  /// Stream for monitoring announcement dismissals.
+  Stream get onAnnouncementDismissedEvent =>
+      _announcementDismissedEventController.stream;
+
+  /// Stream for monitoring announcement wake events.
+  Stream get onAnnouncementWakeEvent => _announcementWakeEventController.stream;
+
+  /// Stream for monitoring sudo alerts.
+  Stream get onSudoAlertEvent => _sudoAlertEventController.stream;
+
+  /// Stream for monitoring agent events.
+  Stream get onAgentEvent => _agentEventController.stream;
+
+  /// Stream for monitoring sensor events.
+  Stream get onSensorEvent => _sensorEventController.stream;
 
   // Constructor
   /// Creates a new Klipper instance. [host] is the hostname or IP address of the Klipper instance. [port] is the port of the Klipper instance. [timeout] is the timeout for the connection (retries if connection fails). [token] is the token for the Klipper instance.
@@ -134,7 +221,7 @@ class Klipper {
   Future<void> _monitorConnection() async {
     while (!_closed) {
       await _updateStatus();
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(const Duration(milliseconds: 250));
     }
   }
 
@@ -192,6 +279,106 @@ class Klipper {
     });
     _jsonRpc.registerMethod('notify_klippy_disconnected', (params) async {
       statusNotifier.status = KlipperStatus.error;
+    });
+
+    // Broadcast Events
+    _jsonRpc.registerMethod('notify_status_update', (params) {
+      _subscriptionEventController.add(params);
+    });
+
+    // GCode Response Events
+    _jsonRpc.registerMethod('notify_gcode_response', (params) {
+      _gcodeResponseEventController.add(params);
+    });
+
+    // File Events
+    _jsonRpc.registerMethod('notify_filelist_changed', (params) {
+      _fileChangedEventController.add(params);
+    });
+
+    // Update Manager Events
+    _jsonRpc.registerMethod('notify_update_response', (params) {
+      _updateManagerResponseEventController.add(params);
+    });
+
+    // Update Manager Refresh Events
+    _jsonRpc.registerMethod('notify_update_refreshed', (params) {
+      _updateManagerRefreshedEventController.add(params);
+    });
+
+    // CPU Throttling Events
+    _jsonRpc.registerMethod('notify_cpu_throttled', (params) {
+      _throttlingEventController.add(params);
+    });
+
+    // Moonraker Stats Events
+    _jsonRpc.registerMethod('notify_proc_stat_update', (params) {
+      _moonrakerStatsEventController.add(params);
+    });
+
+    // History Events
+    _jsonRpc.registerMethod('notify_history_changed', (params) {
+      _historyEventController.add(params);
+    });
+
+    // User Created Events
+    _jsonRpc.registerMethod('notify_user_created', (params) {
+      _userCreatedEventController.add(params);
+    });
+
+    // User Deleted Events
+    _jsonRpc.registerMethod('notify_user_deleted', (params) {
+      _userDeletedEventController.add(params);
+    });
+
+    // User Log Out Events
+    _jsonRpc.registerMethod('notify_user_logged_out', (params) {
+      _userLoggedOutEventController.add(params);
+    });
+
+    // Service State Changed Event
+    _jsonRpc.registerMethod('notify_service_state_changed', (params) {
+      _serviceStateChangedEventController.add(params);
+    });
+
+    // Job Queue Events
+    _jsonRpc.registerMethod('notify_job_queue_changed', (params) {
+      _jobQueueEventController.add(params);
+    });
+
+    // Button Events
+    _jsonRpc.registerMethod('notify_button_event', (params) {
+      _buttonEventController.add(params);
+    });
+
+    // Announcement Updated Events
+    _jsonRpc.registerMethod('notify_announcement_update', (params) {
+      _announcementUpdatedEventController.add(params);
+    });
+
+    // Announcement Dismissed Events
+    _jsonRpc.registerMethod('notify_announcement_dismissed', (params) {
+      _announcementDismissedEventController.add(params);
+    });
+
+    // Announcement Wake Events
+    _jsonRpc.registerMethod('notify_announcement_wake', (params) {
+      _announcementWakeEventController.add(params);
+    });
+
+    // Sudo Alert Events
+    _jsonRpc.registerMethod('notify_sudo_alert', (params) {
+      _sudoAlertEventController.add(params);
+    });
+
+    // Agent Events
+    _jsonRpc.registerMethod('notify_agent_event', (params) {
+      _agentEventController.add(params);
+    });
+
+    // Sensor Events
+    _jsonRpc.registerMethod('sensors:sensor_update', (params) {
+      _sensorEventController.add(params);
     });
   }
 }

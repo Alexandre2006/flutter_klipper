@@ -1,26 +1,24 @@
-import 'dart:io';
-
 import 'package:flutter_klipper/flutter_klipper.dart';
 
 void main() {
+  // Example Coming Soon!
   Klipper('raspberrypi.local').statusNotifier
     ..disconnected.addListener((state) {
-      print('disconnected');
-    })
-    ..error.addListener((state) {
-      print('error');
-    })
-    ..initializing.addListener((state) {
-      print('initializing');
-    })
+      print("Client Disconnected");
+    }, fireImmediately: false,)
     ..ready.addListener((state) {
-      print('ready');
-    })
+      print("Client Ready");
+    }, fireImmediately: false,)
+    ..error.addListener((state) {
+      print("Client Error");
+    }, fireImmediately: false,)
+    ..initializing.addListener((state) {
+      print("Client Initializing");
+    }, fireImmediately: false,)
     ..shutdown.addListener((state) {
-      print('shutdown');
-    })
+      print("Client Shutdown");
+    }, fireImmediately: false,)
     ..startup.addListener((state) {
-      print('startup');
-    });
-  stdin.listen((event) {});
+      print("Client Starting");
+    }, fireImmediately: false,);
 }
