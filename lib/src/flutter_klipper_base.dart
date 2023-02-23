@@ -88,8 +88,6 @@ class Klipper {
         Future.delayed(Duration.zero, () => _connect(timeout));
       }
     }
-
-    print(await sendCommand(PrinterObjectsStatusCommand()));
   }
 
   // Close
