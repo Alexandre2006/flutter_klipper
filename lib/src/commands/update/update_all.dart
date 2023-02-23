@@ -1,4 +1,4 @@
-import 'package:flutter_klipper/src/commands/command.dart';
+import 'package:flutter_klipper/src/commands/base.dart';
 
 class PerformFullUpdateCommand extends BaseCommand {
   @override

@@ -1,4 +1,4 @@
-import 'package:flutter_klipper/src/commands/command.dart';
+import 'package:flutter_klipper/src/commands/base.dart';
 
 class RestartCommand extends BaseCommand {
   @override
@@ -7,5 +7,3 @@ class RestartCommand extends BaseCommand {
   @override
   Map<String, dynamic> parameters = {};
 }
-
-enum RolloverApplication { moonraker, klipper, all }
