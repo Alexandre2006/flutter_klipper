@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_klipper/src/commands/command.dart';
+import 'package:flutter_klipper/src/commands/status/printer_objects.dart';
+import 'package:flutter_klipper/src/commands/status/printer_objects_status.dart';
 import 'package:flutter_klipper/src/errors/klipper_conn_err.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:web_socket_channel/io.dart';
@@ -36,7 +38,6 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 //   - Sudo Access
 //   - Agent Events
 //   - Sensor Events
-
 
 class Klipper {
   // Configuration
@@ -87,6 +88,8 @@ class Klipper {
         Future.delayed(Duration.zero, () => _connect(timeout));
       }
     }
+
+    print(await sendCommand(PrinterObjectsStatusCommand()));
   }
 
   // Close

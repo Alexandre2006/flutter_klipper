@@ -1,13 +1,22 @@
 import 'package:flutter_klipper/src/commands/command.dart';
+import 'package:flutter_klipper/src/commands/status/status_objects.dart';
 
 class PrinterObjectsSubscribeCommand extends BaseCommand {
   @override
   String method = 'printer.objects.subscribe';
 
-  // TODO: make it so user can select which objects to query, and what fields to query
-
   @override
   Map<String, dynamic> parameters = {};
+
+  PrinterObjectsSubscribeCommand({required List<ObjectStatusQuery> objects}) {
+    for (final element in objects) {
+      final tempParameters = parameters as Map<String, Map<String, dynamic>>;
+      tempParameters['objects'] = {};
+      tempParameters['objects']![element.name] =
+          element.parameters.isEmpty ? null : element.parameters;
+      parameters = tempParameters;
+    }
+  }
 }
 
 class PrinterObjectsUnSubscribeCommand extends BaseCommand {
