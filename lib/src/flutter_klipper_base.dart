@@ -7,6 +7,37 @@ import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
+// TODO:
+// - Commands:
+//   - Basic Implementation
+//   - Parser for all retunrs
+//   - Write Tests for all commands
+//   - Documentation for All
+// - File Operations:
+//   - Basic Implementation
+//   - Parser for all retunrs
+//   - Write Tests for all commands
+//   - Documentation for All
+// - Events:
+//   - Klipper Status (Disconnected/Connected)
+//   - Klippy Status (Ready/Error/Shutdown/Startup/Initializing)
+//   - Subscription Events
+//   - GCode Response Events
+//   - File Operations Events
+//   - Update Manager
+//   - CPU Throttling
+//   - Moonraker Stats
+//   - History
+//   - User Changes
+//   - Service Mode
+//   - Job Queue
+//   - Button Events
+//   - Announcements
+//   - Sudo Access
+//   - Agent Events
+//   - Sensor Events
+
+
 class Klipper {
   // Configuration
   String host;
