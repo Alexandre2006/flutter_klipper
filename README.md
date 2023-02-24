@@ -1,7 +1,13 @@
 
 --- 
 
+<div align="center">
+
+[![pub package](https://img.shields.io/pub/v/flutter_klipper.svg)](https://pub.dev/packages/flutter_klipper)
+[![GitHub license](https://img.shields.io/github/license/Alexandre2006/flutter_klipper)](LICENSE.md)
 [![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)](https://pub.dev/packages/lint)
+
+</div>
 
 ---
 
