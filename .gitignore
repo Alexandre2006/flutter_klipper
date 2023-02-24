@@ -16,3 +16,14 @@ doc/api/
 
 # VS Code
 .vscode/
+
+# Documentation (Nextra - Next.js - pnpm)
+docs/.next/
+docs/out/
+docs/node_modules/
+docs/.pnpm-debug.log
+docs/.pnpm-lock.yaml
+docs/pnpm-lock.yaml
+docs/pnpmfile.js
+docs/pnpm-workspace.yaml
+docs/yarn.lock

@@ -35,8 +35,11 @@
 
 
 ---
+<center>
 
 ## How to Use
+
+</center>
 
 To use `flutter_klipper`, start by installing the package from [pub.dev](https://pub.dev/packages/flutter_klipper). You can do this by adding the package to your `pubspec.yaml` file:
 
@@ -85,7 +88,11 @@ That's it! You can now use the flutter_klipper package to control your Klipper-b
 
 ---
 
+<center>
+
 ## Contributing
+
+</center>
 
 We welcome contributions to `flutter_klipper`! If you would like to contribute, please follow these steps:
 
@@ -101,7 +108,11 @@ Thank you for your interest in contributing to `flutter_klipper`!
 
 ---
 
+<center>
+
 ## Credits
+
+</center>
 
 `flutter_klipper` would not be possible without the amazing work of the following projects:
 
@@ -115,7 +126,21 @@ We would like to express our gratitude to the developers of these projects and t
 
 ---
 
+<center>
+
 ## License
+
+| Permissions              | Conditions                     | Limitations   |
+|:------------------------:|:------------------------------:|:-------------:|
+| Commercial use           | Disclose source                | Liability     |
+| Modification             | Same license                   | Warranty      |
+| Distribution             | State changes                  |               |
+| Patent use               | License and copyright notice   |               |
+| Private use              |                                |               |
+
+</center>
+
+---
 
 Flutter Klipper is licensed under the GNU General Public License v3.0. You may obtain a copy of the License at https://www.gnu.org/licenses/gpl-3.0.en.html.
 
@@ -126,13 +151,3 @@ For more information about open-source licensing and the GPL, please visit the O
 Note that this license does not apply to any third-party libraries used by Flutter Klipper, which are each distributed under their own respective licenses. Please refer to the documentation of each library for details.
 
 The full license is available in the [LICENSE](LICENSE.md) file.
-
-### Overview
-
-| Permissions            | Conditions                   | Limitations |
-|------------------------|------------------------------|-------------|
-| Commercial use         | Disclose source              | Liability   |
-| Modification           | Same license                 | Warranty    |
-| Distribution           | State changes                |             |
-| Patent use             | License and copyright notice |             |
-| Private use            |                              |             |
