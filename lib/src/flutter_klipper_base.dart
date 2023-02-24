@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
-import 'package:http/http.dart' as http;
 
 import 'package:flutter_klipper/src/commands/base.dart';
 import 'package:flutter_klipper/src/errors/klipper_conn_err.dart';
@@ -274,7 +272,7 @@ class Klipper {
   Future<dynamic> _getFile(String path) async {
     // Download file at path
     final Uri uri = Uri.parse('http://$host:$port$path');
-    final http.Response response = await http.get(uri);
+    final Response response = await get(uri);
     if (response.statusCode == 200) {
       return response.bodyBytes;
     } else {
