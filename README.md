@@ -31,15 +31,16 @@
 </p>
 
 ---
-![Alt](https://repobeats.axiom.co/api/embed/c019550dd5cc0a7769b47efb31f29c9c6283ba9d.svg "Repobeats analytics image")
 
+<p align="center">
+
+<img src="https://repobeats.axiom.co/api/embed/c019550dd5cc0a7769b47efb31f29c9c6283ba9d.svg" alt="Repobeats analytics image"/>
+
+</p>
 
 ---
-<center>
 
-## How to Use
-
-</center>
+<h2 align="center">How to Use</h2>
 
 To use `flutter_klipper`, start by installing the package from [pub.dev](https://pub.dev/packages/flutter_klipper). You can do this by adding the package to your `pubspec.yaml` file:
 
@@ -88,11 +89,7 @@ That's it! You can now use the flutter_klipper package to control your Klipper-b
 
 ---
 
-<center>
-
-## Contributing
-
-</center>
+<h2 align="center">Contributing</h2>
 
 We welcome contributions to `flutter_klipper`! If you would like to contribute, please follow these steps:
 
@@ -108,11 +105,7 @@ Thank you for your interest in contributing to `flutter_klipper`!
 
 ---
 
-<center>
-
-## Credits
-
-</center>
+<h2 align="center">Credits</h2>
 
 `flutter_klipper` would not be possible without the amazing work of the following projects:
 
@@ -126,19 +119,40 @@ We would like to express our gratitude to the developers of these projects and t
 
 ---
 
-<center>
+<h2 align="center">License</h2>
 
-## License
-
-| Permissions              | Conditions                     | Limitations   |
-|:------------------------:|:------------------------------:|:-------------:|
-| Commercial use           | Disclose source                | Liability     |
-| Modification             | Same license                   | Warranty      |
-| Distribution             | State changes                  |               |
-| Patent use               | License and copyright notice   |               |
-| Private use              |                                |               |
-
-</center>
+<table align="center">
+    <tr>
+        <td>Permissions</td>
+        <td>Conditions</td>
+        <td>Limitations</td>
+    </tr>
+    <tr>
+        <td>Commercial use</td>
+        <td>Disclose source</td>
+        <td>Liability</td>
+    </tr>
+    <tr>
+        <td>Modification</td>
+        <td>Same license</td>
+        <td>Warranty</td>
+    </tr>
+    <tr>
+        <td>Distribution</td>
+        <td>State changes</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Patent use</td>
+        <td>License and copyright notice</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Private use</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
 ---
 
