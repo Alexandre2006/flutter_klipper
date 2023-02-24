@@ -80,6 +80,7 @@ klipper.statusNotifier.ready.addListener(
 klipper.sendCommand(RunGCodeCommand('G28')); // Home the printer
 ```
 <br/>
+
 That's it! You can now use the flutter_klipper package to control your Klipper-based 3D printer via Moonraker. For more information, refer to the [documentation](https://klipper.thinkalex.dev).
 
 ---
