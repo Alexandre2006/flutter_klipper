@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class BatchSetDeviceOffCommand extends BaseCommand {
+class BatchSetDeviceOffCommand extends JsonRPCCommand {
   @override
   String method = 'machine.device_power.off';
 

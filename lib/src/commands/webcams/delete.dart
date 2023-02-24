@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class DeleteWebcamCommand extends BaseCommand {
+class DeleteWebcamCommand extends JsonRPCCommand {
   @override
   String method = 'server.webcams.delete_item';
 

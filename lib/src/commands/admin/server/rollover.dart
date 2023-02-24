@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class RolloverLogsCommand extends BaseCommand {
+class RolloverLogsCommand extends JsonRPCCommand {
   @override
   String method = 'server.logs.rollover';
 

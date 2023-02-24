@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class UpdateMoonrakerCommand extends BaseCommand {
+class UpdateMoonrakerCommand extends JsonRPCCommand {
   @override
   String method = 'machine.update.moonraker';
 

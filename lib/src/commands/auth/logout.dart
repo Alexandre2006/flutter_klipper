@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class LogoutUserCommand extends BaseCommand {
+class LogoutUserCommand extends JsonRPCCommand {
   @override
   String method = 'access.logout';
 

@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class ListDebugDatabaseNamespacesCommand extends BaseCommand {
+class ListDebugDatabaseNamespacesCommand extends JsonRPCCommand {
   @override
   String method = 'debug.database.list';
 

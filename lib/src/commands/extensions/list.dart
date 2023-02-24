@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class ListExtensionsCommand extends BaseCommand {
+class ListExtensionsCommand extends JsonRPCCommand {
   @override
   String method = 'server.extensions.list';
 

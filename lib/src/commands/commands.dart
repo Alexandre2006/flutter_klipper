@@ -47,6 +47,8 @@ export 'package:flutter_klipper/src/commands/debug/test.dart';
 export 'package:flutter_klipper/src/commands/extensions/call.dart';
 export 'package:flutter_klipper/src/commands/extensions/event.dart';
 export 'package:flutter_klipper/src/commands/extensions/list.dart';
+// Export all File Commands
+
 // Export all GCode Commands
 export 'package:flutter_klipper/src/commands/gcode/help.dart';
 export 'package:flutter_klipper/src/commands/gcode/run.dart';

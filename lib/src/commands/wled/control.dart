@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class ControlStripCommand extends BaseCommand {
+class ControlStripCommand extends JsonRPCCommand {
   @override
   String method = 'machine.wled.post_strip';
 

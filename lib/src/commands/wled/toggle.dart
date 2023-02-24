@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class StripToggleCommand extends BaseCommand {
+class StripToggleCommand extends JsonRPCCommand {
   @override
   String method = 'machine.wled.toggle';
 

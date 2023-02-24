@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetBatchDeviceStatusCommand extends BaseCommand {
+class GetBatchDeviceStatusCommand extends JsonRPCCommand {
   @override
   String method = 'machine.device_power.status';
 

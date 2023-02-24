@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class PerformFullUpdateCommand extends BaseCommand {
+class PerformFullUpdateCommand extends JsonRPCCommand {
   @override
   String method = 'machine.update.full';
 

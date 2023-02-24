@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class DeleteUserCommand extends BaseCommand {
+class DeleteUserCommand extends JsonRPCCommand {
   @override
   String method = 'access.delete_user';
 

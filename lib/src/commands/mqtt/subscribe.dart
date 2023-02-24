@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class SubscribeTopicCommand extends BaseCommand {
+class SubscribeTopicCommand extends JsonRPCCommand {
   @override
   String method = 'server.mqtt.subscribe';
 

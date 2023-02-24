@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class ResetUserPasswordCommand extends BaseCommand {
+class ResetUserPasswordCommand extends JsonRPCCommand {
   @override
   String method = 'access.user.password';
 

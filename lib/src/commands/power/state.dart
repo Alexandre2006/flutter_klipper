@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class SetDeviceStateCommand extends BaseCommand {
+class SetDeviceStateCommand extends JsonRPCCommand {
   @override
   String method = 'machine.device_power.post_device';
 

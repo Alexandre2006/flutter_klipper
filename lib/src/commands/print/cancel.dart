@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class CancelPrintCommand extends BaseCommand {
+class CancelPrintCommand extends JsonRPCCommand {
   @override
   String method = 'printer.print.cancel';
 

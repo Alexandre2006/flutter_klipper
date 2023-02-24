@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class ListAnnouncementsCommand extends BaseCommand {
+class ListAnnouncementsCommand extends JsonRPCCommand {
   @override
   String method = 'server.announcements.list';
 

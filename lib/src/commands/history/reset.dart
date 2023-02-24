@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class ResetJobTotalsCommand extends BaseCommand {
+class ResetJobTotalsCommand extends JsonRPCCommand {
   @override
   String method = 'server.history.reset_totals';
 

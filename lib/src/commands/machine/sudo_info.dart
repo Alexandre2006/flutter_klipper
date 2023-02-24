@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetSudoInfoCommand extends BaseCommand {
+class GetSudoInfoCommand extends JsonRPCCommand {
   @override
   String method = 'machine.sudo.info';
 

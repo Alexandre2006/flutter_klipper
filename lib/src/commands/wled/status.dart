@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetStripStatusCommand extends BaseCommand {
+class GetStripStatusCommand extends JsonRPCCommand {
   @override
   String method = 'machine.wled.status';
 

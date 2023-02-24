@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class RemoveAnnouncementFeedCommand extends BaseCommand {
+class RemoveAnnouncementFeedCommand extends JsonRPCCommand {
   @override
   String method = 'server.announcements.delete_feed';
 

@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class UpdateKlipperCommand extends BaseCommand {
+class UpdateKlipperCommand extends JsonRPCCommand {
   @override
   String method = 'machine.update.klipper';
 

@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class RestartServiceCommand extends BaseCommand {
+class RestartServiceCommand extends JsonRPCCommand {
   @override
   String method = 'machine.services.restart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetJobCommand extends BaseCommand {
+class GetJobCommand extends JsonRPCCommand {
   @override
   String method = 'server.history.get_job';
 

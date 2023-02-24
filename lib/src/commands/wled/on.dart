@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class StripOnCommand extends BaseCommand {
+class StripOnCommand extends JsonRPCCommand {
   @override
   String method = 'machine.wled.on';
 

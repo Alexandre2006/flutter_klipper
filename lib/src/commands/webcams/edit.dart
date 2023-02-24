@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class EditWebcamCommand extends BaseCommand {
+class EditWebcamCommand extends JsonRPCCommand {
   @override
   String method = 'server.webcams.post_item';
 
@@ -46,7 +46,7 @@ class EditWebcamCommand extends BaseCommand {
   }
 }
 
-class AddWebCamCommand extends BaseCommand {
+class AddWebCamCommand extends JsonRPCCommand {
   @override
   String method = 'server.webcams.post_item';
 

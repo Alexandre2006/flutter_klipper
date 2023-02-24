@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class ServerInfoCommand extends BaseCommand {
+class ServerInfoCommand extends JsonRPCCommand {
   @override
   String method = 'server.info';
 

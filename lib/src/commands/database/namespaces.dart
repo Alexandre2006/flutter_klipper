@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetNamespacesCommand extends BaseCommand {
+class GetNamespacesCommand extends JsonRPCCommand {
   @override
   String method = 'server.database.list';
 

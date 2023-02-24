@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class PrintFileCommand extends BaseCommand {
+class PrintFileCommand extends JsonRPCCommand {
   @override
   String method = 'printer.print.start';
 

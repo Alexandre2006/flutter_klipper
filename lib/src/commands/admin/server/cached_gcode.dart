@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class CachedGCodeResponsesCommand extends BaseCommand {
+class CachedGCodeResponsesCommand extends JsonRPCCommand {
   @override
   String method = 'server.temperature_store';
 

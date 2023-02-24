@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class SetSudoPasswordCommand extends BaseCommand {
+class SetSudoPasswordCommand extends JsonRPCCommand {
   @override
   String method = 'machine.sudo.password';
 

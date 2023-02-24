@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class PublishTopicCommand extends BaseCommand {
+class PublishTopicCommand extends JsonRPCCommand {
   @override
   String method = 'server.mqtt.publish';
 

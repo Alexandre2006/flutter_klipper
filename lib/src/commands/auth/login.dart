@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class LoginUserCommand extends BaseCommand {
+class LoginUserCommand extends JsonRPCCommand {
   @override
   String method = 'access.login';
 

@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetHistoryListCommand extends BaseCommand {
+class GetHistoryListCommand extends JsonRPCCommand {
   @override
   String method = 'server.history.list';
 

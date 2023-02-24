@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetSensorMeasurementsCommand extends BaseCommand {
+class GetSensorMeasurementsCommand extends JsonRPCCommand {
   @override
   String method = 'server.sensors.measurements';
 

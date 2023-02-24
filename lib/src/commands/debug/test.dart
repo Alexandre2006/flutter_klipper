@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class DebugTestNotifierCommand extends BaseCommand {
+class DebugTestNotifierCommand extends JsonRPCCommand {
   @override
   String method = 'debug.notifiers.test';
 

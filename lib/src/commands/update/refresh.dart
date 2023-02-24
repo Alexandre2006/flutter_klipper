@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class RefreshUpdateStatusCommand extends BaseCommand {
+class RefreshUpdateStatusCommand extends JsonRPCCommand {
   @override
   String method = 'machine.update.refresh';
 

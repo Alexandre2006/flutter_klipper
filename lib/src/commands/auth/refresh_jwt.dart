@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class RefreshJSONWebTokenCommand extends BaseCommand {
+class RefreshJSONWebTokenCommand extends JsonRPCCommand {
   @override
   String method = 'access.refresh_jwt';
 

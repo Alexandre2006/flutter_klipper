@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GCodeHelpCommand extends BaseCommand {
+class GCodeHelpCommand extends JsonRPCCommand {
   @override
   String method = 'printer.gcode.help';
 

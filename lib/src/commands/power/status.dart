@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetDeviceStatusCommand extends BaseCommand {
+class GetDeviceStatusCommand extends JsonRPCCommand {
   @override
   String method = 'machine.device_power.get_device';
 

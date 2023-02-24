@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetUserCommand extends BaseCommand {
+class GetUserCommand extends JsonRPCCommand {
   @override
   String method = 'access.get_user';
 

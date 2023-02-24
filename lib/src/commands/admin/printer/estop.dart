@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class EmergencyStopCommand extends BaseCommand {
+class EmergencyStopCommand extends JsonRPCCommand {
   @override
   String method = 'printer.emergency_stop';
 

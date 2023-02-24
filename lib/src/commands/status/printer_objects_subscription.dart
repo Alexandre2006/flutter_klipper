@@ -1,7 +1,7 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 import 'package:flutter_klipper/src/commands/status/status_objects.dart';
 
-class PrinterObjectsSubscribeCommand extends BaseCommand {
+class PrinterObjectsSubscribeCommand extends JsonRPCCommand {
   @override
   String method = 'printer.objects.subscribe';
 
@@ -19,7 +19,7 @@ class PrinterObjectsSubscribeCommand extends BaseCommand {
   }
 }
 
-class PrinterObjectsUnSubscribeCommand extends BaseCommand {
+class PrinterObjectsUnSubscribeCommand extends JsonRPCCommand {
   @override
   String method = 'printer.objects.subscribe';
 

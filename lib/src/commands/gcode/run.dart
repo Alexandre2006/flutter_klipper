@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class RunGCodeCommand extends BaseCommand {
+class RunGCodeCommand extends JsonRPCCommand {
   @override
   String method = 'printer.gcode.script';
 

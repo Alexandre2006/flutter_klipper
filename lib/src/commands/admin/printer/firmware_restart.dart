@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class FirmwareRestartCommand extends BaseCommand {
+class FirmwareRestartCommand extends JsonRPCCommand {
   @override
   String method = 'printer.firmware_restart';
 

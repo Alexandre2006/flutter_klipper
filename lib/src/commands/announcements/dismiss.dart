@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class DismissAnnouncementCommand extends BaseCommand {
+class DismissAnnouncementCommand extends JsonRPCCommand {
   @override
   String method = 'server.announcements.dismiss';
 

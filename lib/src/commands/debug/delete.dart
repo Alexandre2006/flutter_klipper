@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class DeleteDebugDatabaseItemCommand extends BaseCommand {
+class DeleteDebugDatabaseItemCommand extends JsonRPCCommand {
   @override
   String method = 'debug.database.delete_item';
 

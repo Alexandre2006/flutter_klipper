@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetUpdateStatusCommand extends BaseCommand {
+class GetUpdateStatusCommand extends JsonRPCCommand {
   @override
   String method = 'machine.update.status';
 

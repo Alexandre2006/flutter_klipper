@@ -1,19 +1,20 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class IdentifyConnectionCommand extends BaseCommand {
+class IdentifyConnectionCommand extends JsonRPCCommand {
   @override
   String method = 'server.connection.identify';
 
   @override
   Map<String, dynamic> parameters = {};
 
-  IdentifyConnectionCommand(
-      {required String clientName,
-      required String version,
-      required ConnectionType type,
-      required String url,
-      String? accessToken,
-      String? apiKey,}) {
+  IdentifyConnectionCommand({
+    required String clientName,
+    required String version,
+    required ConnectionType type,
+    required String url,
+    String? accessToken,
+    String? apiKey,
+  }) {
     parameters['client_name'] = clientName;
     parameters['version'] = version;
     parameters['type'] = type.toString();

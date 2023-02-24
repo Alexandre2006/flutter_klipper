@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GenerateApiKeyCommand extends BaseCommand {
+class GenerateApiKeyCommand extends JsonRPCCommand {
   @override
   String method = 'access.post_api_key';
 

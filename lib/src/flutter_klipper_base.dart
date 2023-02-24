@@ -1,21 +1,23 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter_klipper/src/commands/base.dart';
 import 'package:flutter_klipper/src/errors/klipper_conn_err.dart';
 import 'package:flutter_klipper/src/services/status_notifiers.dart';
+import 'package:http/http.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 // TODO:
 // - Commands:
-//   - Parser for all retunrs
+//   - Parser for all returns (+ better error handling)
 //   - Write Tests for all commands
 //   - Documentation for All
 // - File Operations:
-//   - Basic Implementation
-//   - Parser for all retunrs
+//   - Parser for all retunrs (+ better error handling)
 //   - Write Tests for all commands
 //   - Documentation for All
 // - Events:
@@ -252,20 +254,89 @@ class Klipper {
   }
 
   // User Facing Methods
-  /// Sends a command of type [BaseCommand] to Klipper. Returns the parsed response.
+  /// Sends a command of type [JsonRPCCommand] to Klipper. Returns the parsed response.
   Future<dynamic> sendCommand(
-    BaseCommand command,
+    JsonRPCCommand command,
   ) async {
     return command.parseResponse(
       await _sendRequest(command.method, params: command.parameters),
     );
   }
 
-  /// Sends a notification of type [BaseCommand] to Klipper. Does not return a response.
+  /// Sends a notification of type [JsonRPCCommand] to Klipper. Does not return a response.
   Future<void> sendNotification(
-    BaseCommand command,
+    JsonRPCCommand command,
   ) async {
     return _sendNotification(command.method, command.parameters);
+  }
+
+  // File Commands
+  Future<dynamic> _getFile(String path) async {
+    // Download file at path
+    final Uri uri = Uri.parse('http://$host:$port$path');
+    final http.Response response = await http.get(uri);
+    if (response.statusCode == 200) {
+      return response.bodyBytes;
+    } else {
+      throw KlipperConnectionError('Failed to download file');
+    }
+  }
+
+  Future<int> uploadFile(
+    List<int> data, {
+    required String filename,
+    String root = "gcodes",
+    String? path,
+    String? checksum,
+    bool printGCode = false,
+  }) async {
+    // Create Uri
+    final Uri uri = Uri.parse('http://$host:$port/server/files/upload');
+
+    // Create Request
+    final MultipartRequest multipartRequest = MultipartRequest('POST', uri);
+    multipartRequest.files.add(
+      MultipartFile.fromBytes(
+        'file',
+        data,
+        filename: filename,
+      ),
+    );
+
+    // Add Fields
+    multipartRequest.fields['root'] = root;
+    multipartRequest.fields['print'] = 'true';
+    if (path != null) {
+      multipartRequest.fields['path'] = path;
+    }
+    if (checksum != null) {
+      multipartRequest.fields['checksum'] = checksum;
+    }
+
+    // Send Data
+    final StreamedResponse streamedResponse = await multipartRequest.send();
+
+    // Check for success (201)
+    if (streamedResponse.statusCode == 201) {
+      return streamedResponse.statusCode;
+    } else {
+      throw KlipperConnectionError('Failed to upload file');
+    }
+  }
+
+  /// Gets a file from the Klipper instance. [path] is the path of the file to get.
+  Future<dynamic> getFile(String path) async {
+    return _getFile("/server/files/$path");
+  }
+
+  /// Gets the Klipper log from the Klipper instance.
+  Future<dynamic> getKlippyLog() async {
+    return getFile("klippy.log");
+  }
+
+  /// Gets the Moonraker log from the Klipper instance.
+  Future<dynamic> getMoonrakerLog() async {
+    return getFile("moonraker.log");
   }
 
   // Events

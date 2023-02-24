@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class GetDatabaseItemCommand extends BaseCommand {
+class GetDatabaseItemCommand extends JsonRPCCommand {
   @override
   String method = 'server.database.get_item';
 

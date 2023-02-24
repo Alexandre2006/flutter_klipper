@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class StartServiceCommand extends BaseCommand {
+class StartServiceCommand extends JsonRPCCommand {
   @override
   String method = 'machine.services.start';
 

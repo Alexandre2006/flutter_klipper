@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_klipper/src/errors/klipper_com_error.dart';
 
-abstract class BaseCommand {
+abstract class JsonRPCCommand {
   abstract String method;
   abstract Map<String, dynamic> parameters;
 

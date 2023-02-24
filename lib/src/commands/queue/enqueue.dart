@@ -1,6 +1,6 @@
 import 'package:flutter_klipper/src/commands/base.dart';
 
-class EnqueueJobsCommand extends BaseCommand {
+class EnqueueJobsCommand extends JsonRPCCommand {
   @override
   String method = 'server.job_queue.post_job';
 
